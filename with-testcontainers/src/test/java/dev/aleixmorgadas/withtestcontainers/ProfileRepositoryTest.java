@@ -19,7 +19,8 @@ class ProfileRepositoryTest {
 
     @Container
     @ServiceConnection
-    private static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15.1-alpine");
+    private static final PostgreSQLContainer<?> postgres =
+            new PostgreSQLContainer<>("postgres:15.1-alpine");
 
     @Autowired
     private ProfileRepository repository;

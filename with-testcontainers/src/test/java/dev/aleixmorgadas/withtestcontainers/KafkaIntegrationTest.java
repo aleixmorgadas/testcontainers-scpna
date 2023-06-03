@@ -1,20 +1,14 @@
 package dev.aleixmorgadas.withtestcontainers;
 
-import junit.framework.TestListener;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.TestPropertySource;
-import org.testcontainers.containers.KafkaContainer;
-import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.utility.DockerImageName;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -27,10 +21,6 @@ import static org.awaitility.Awaitility.waitAtMost;
 @Testcontainers
 @TestPropertySource(properties = "spring.kafka.consumer.auto-offset-reset=earliest")
 class KafkaIntegrationTest extends AbstractIntegrationTest {
-
-    @Container
-    @ServiceConnection
-    static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.3.0"));
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;

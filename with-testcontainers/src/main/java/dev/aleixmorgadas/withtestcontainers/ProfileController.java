@@ -30,7 +30,7 @@ public class ProfileController {
     @GetMapping("/insert")
     ResponseEntity<Profile> save() {
         kafkaTemplate.send("request", "save");
-        var profile = new Profile(UUID.randomUUID().toString(), "Luis");
+        var profile = new Profile(UUID.randomUUID().toString(), "Alex");
         repository.save(profile);
         return ResponseEntity.ok(profile);
     }
